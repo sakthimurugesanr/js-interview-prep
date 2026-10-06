@@ -1,12 +1,116 @@
 # JavaScript Interview Guide — 4–5 Years of Experience
 
+<a id="question-index"></a>
+
+## Question Index
+
+Click any question to jump directly to its answer. Each answer has a link back to this index.
+
+### Language basics and functions
+
+- [1. What are the differences between `var`, `let`, and `const`?](#question-1)
+- [2. What are JavaScript’s primitive and non-primitive data types?](#question-2)
+- [3. What is the difference between `null` and `undefined`?](#question-3)
+- [4. What is the difference between `==` and `===`?](#question-4)
+- [5. What is type coercion, and how does it affect addition and comparison?](#question-5)
+- [6. What are truthy and falsy values?](#question-6)
+- [7. What is hoisting, and how does it affect variables and functions?](#question-7)
+- [8. What is the temporal dead zone?](#question-8)
+- [9. What are global scope, function scope, and block scope?](#question-9)
+- [10. What is a closure, and what are its practical use cases?](#question-10)
+- [11. What is lexical scope?](#question-11)
+- [12. How does the `this` keyword behave in different contexts?](#question-12)
+- [13. What are the differences between regular functions and arrow functions?](#question-13)
+- [14. What are the differences between `call()`, `apply()`, and `bind()`?](#question-14)
+- [15. What are higher-order functions and callbacks?](#question-15)
+- [16. What is currying, and when is it useful?](#question-16)
+- [17. What is the difference between a function declaration and a function expression?](#question-17)
+- [18. What are pure functions and side effects?](#question-18)
+- [19. What are the differences between shallow copy and deep copy?](#question-19)
+- [20. How do spread syntax, rest parameters, and destructuring work?](#question-20)
+
+### Arrays and objects
+
+- [21. What are the differences between `map()`, `filter()`, `reduce()`, and `forEach()`?](#question-21)
+- [22. What are the differences between `find()`, `findIndex()`, and `filter()`?](#question-22)
+- [23. What are the differences between `slice()` and `splice()`?](#question-23)
+- [24. How does `sort()` work, and how do you correctly sort numbers?](#question-24)
+- [25. Which common array methods mutate the original array?](#question-25)
+- [26. What are the differences between `some()` and `every()`?](#question-26)
+- [27. What are the differences between `for...in` and `for...of`?](#question-27)
+- [28. What are the differences between objects, `Map`, and `Set`?](#question-28)
+- [29. What are prototypes and prototypal inheritance?](#question-29)
+- [30. What are the differences between `Object.freeze()` and `Object.seal()`?](#question-30)
+- [31. How do optional chaining (`?.`) and nullish coalescing (`??`) work?](#question-31)
+
+### Async, events, and cleanup
+
+- [32. What is an execution context, and how does the call stack work?](#question-32)
+- [33. How does the JavaScript event loop work?](#question-33)
+- [34. What are the differences between microtasks and macrotasks?](#question-34)
+- [35. What is a promise, and what are its states?](#question-35)
+- [36. How do promise chaining and error propagation work?](#question-36)
+- [37. How does `async/await` work, and how do you handle errors?](#question-37)
+- [38. What are the differences between the promise combination methods?](#question-38)
+- [39. What are the differences between sequential and parallel asynchronous execution?](#question-39)
+- [40. What are debounce and throttle, and when should you use each?](#question-40)
+- [41. How do you cancel a `fetch()` request using `AbortController`?](#question-41)
+- [42. How do you handle HTTP errors, network failures, and stale API responses?](#question-42)
+- [43. What are event bubbling, event capturing, and event delegation?](#question-43)
+- [44. What are the differences between `preventDefault()` and `stopPropagation()`?](#question-44)
+- [45. What causes memory leaks in JavaScript, and how can you prevent them?](#question-45)
+
+### Core coding questions
+
+- [46. How would you implement memoization using a closure?](#question-46)
+- [47. How would you implement a simplified version of `Array.prototype.map()`?](#question-47)
+- [48. How would you flatten a nested array without using `flat()`?](#question-48)
+- [49. How would you solve Two Sum efficiently using a `Map`?](#question-49)
+- [50. How would you find the longest substring without repeating characters?](#question-50)
+
+### Additional interview topics
+
+- [51. How do ES modules work, and how are they different from CommonJS?](#question-51)
+- [52. What happens when you use `new`, and how do classes work?](#question-52)
+- [53. What are property descriptors, getters, and setters?](#question-53)
+- [54. How do `Object.keys()`, `values()`, and `entries()` differ?](#question-54)
+- [55. What are `WeakMap` and `WeakSet`, and when are they useful?](#question-55)
+- [56. How do iterables, iterators, and generators work?](#question-56)
+- [57. What are strict mode and accidental global variables?](#question-57)
+- [58. Why is `0.1 + 0.2` not exactly `0.3`, and how should you handle numbers?](#question-58)
+- [59. What are sparse arrays, and why do their methods behave differently?](#question-59)
+- [60. How would you group, count, and remove duplicates from data?](#question-60)
+- [61. What is a race condition in asynchronous JavaScript?](#question-61)
+- [62. How do you control concurrency for many async operations?](#question-62)
+- [63. How would you implement retry and timeout behavior?](#question-63)
+- [64. How do you keep the browser responsive during expensive work?](#question-64)
+- [65. What are layout, paint, and common DOM performance mistakes?](#question-65)
+- [66. What are cookies, `localStorage`, `sessionStorage`, and IndexedDB?](#question-66)
+- [67. What is CORS, and why does a browser block some requests?](#question-67)
+- [68. What is XSS, and how can JavaScript code avoid it?](#question-68)
+- [69. How do you handle errors well in application code?](#question-69)
+- [70. How would you test and debug JavaScript code?](#question-70)
+- [71. How do you explain time and space complexity?](#question-71)
+- [72. How do you choose mutation versus immutable updates?](#question-72)
+
+### Practice and preparation
+
+- [73. What output questions should you be able to explain?](#question-73)
+- [74. Which additional coding exercises should you practice?](#question-74)
+- [75. What should a developer with 4–5 years of experience explain beyond syntax?](#question-75)
+
+
 This guide uses simple English. It covers your 50 questions and adds important topics that interviewers often use to check deeper understanding.
 
 For each answer, learn the idea, explain the example, and discuss the mistake to avoid. You do not need to memorize every sentence. In an interview, give the short answer first, then explain a useful example and a tradeoff.
 
 No question list can guarantee success in every interview. For this experience level, you should also practice debugging, coding, browser behavior, and explaining decisions from your own projects.
 
+<a id="question-1"></a>
+
 ## 1. What are the differences between `var`, `let`, and `const`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** `var` is function-scoped. `let` and `const` are block-scoped. `let` allows reassignment; `const` does not. I normally use `const`, use `let` when a value must change, and avoid `var` in new code.
 
@@ -33,7 +137,11 @@ user.name = "Alex"; // Allowed: the object can change.
 
 **Important:** `const` does not make an object immutable. In a classic browser script, top-level `var` can become a property of `window`; top-level `let` and `const` do not. Module variables are scoped to the module.
 
+<a id="question-2"></a>
+
 ## 2. What are JavaScript’s primitive and non-primitive data types?
+
+[Back to question index](#question-index)
 
 **Interview answer:** JavaScript has seven primitive types: `string`, `number`, `bigint`, `boolean`, `undefined`, `symbol`, and `null`. Objects are non-primitive. Arrays, functions, dates, maps, and sets are all objects.
 
@@ -58,7 +166,11 @@ Array.isArray([]); // true
 
 **Important:** JavaScript passes arguments by value. For an object, that value is a reference to the object. It is misleading to say JavaScript passes objects by reference.
 
+<a id="question-3"></a>
+
 ## 3. What is the difference between `null` and `undefined`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** `undefined` usually means a value has not been supplied or assigned. `null` usually means we intentionally represent an empty value. Both are separate primitive values.
 
@@ -83,7 +195,11 @@ greet(null); // null
 
 **Practical use:** Agree on a clear API contract. For example, `null` can mean “no saved address,” while a missing property can mean “this field was not requested.”
 
+<a id="question-4"></a>
+
 ## 4. What is the difference between `==` and `===`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** `==` compares after applying type conversion when needed. `===` compares without that conversion. I normally use `===` because the result is easier to predict.
 
@@ -101,7 +217,11 @@ Object equality checks identity, not matching contents. Two objects with the sam
 
 **Follow-up:** `Object.is(NaN, NaN)` is `true`; `Object.is(0, -0)` is `false`. Strict equality treats `0` and `-0` as equal. An intentional `value == null` checks both `null` and `undefined`, but use it only when the team's style allows it.
 
+<a id="question-5"></a>
+
 ## 5. What is type coercion, and how does it affect addition and comparison?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Type coercion is automatic conversion from one type to another. It happens in arithmetic, comparisons, conditions, and other operations. I use explicit conversion when handling input to avoid surprising results.
 
@@ -119,7 +239,11 @@ For `+`, operands are converted to primitive values first. If either resulting v
 
 **Mistake to avoid:** Form inputs are usually strings. Validate them before conversion because `Number("")` gives `0`, which may incorrectly accept an empty field.
 
+<a id="question-6"></a>
+
 ## 6. What are truthy and falsy values?
+
+[Back to question index](#question-index)
 
 **Interview answer:** A falsy value becomes `false` in a Boolean context. A truthy value becomes `true`. The usual falsy values are `false`, `0`, `-0`, `0n`, `""`, `null`, `undefined`, and `NaN`.
 
@@ -138,7 +262,11 @@ count ?? 10; // 0: replaces only null or undefined.
 
 **Browser edge case:** The legacy `document.all` object is also falsy. It is rarely relevant to application code.
 
+<a id="question-7"></a>
+
 ## 7. What is hoisting, and how does it affect variables and functions?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Hoisting describes how declarations are handled before the code in a scope runs. The code is not physically moved. `var` is initialized to `undefined`; `let` and `const` exist but cannot be read before initialization. Function declarations are usually available before their line runs.
 
@@ -157,7 +285,11 @@ A function expression follows the rules of the variable holding it. Calling a `v
 
 **Mistake to avoid:** Saying `let` and `const` are “not hoisted.” Their bindings are created early, but remain uninitialized in the temporal dead zone.
 
+<a id="question-8"></a>
+
 ## 8. What is the temporal dead zone?
+
+[Back to question index](#question-index)
 
 **Interview answer:** The temporal dead zone, or TDZ, is the period from entering a scope until a `let`, `const`, or class binding is initialized. Reading that binding during this period throws a ReferenceError.
 
@@ -174,7 +306,11 @@ The inner declaration shadows the outer variable throughout the block, including
 
 **Follow-up:** `typeof unknownName` returns `"undefined"` if the name is undeclared. But `typeof` on a binding in its TDZ throws. Declare variables before use so the execution order is clear.
 
+<a id="question-9"></a>
+
 ## 9. What are global scope, function scope, and block scope?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Scope controls where a variable can be accessed. Global scope is shared across the relevant global environment. Function scope belongs to a function. Block scope belongs to a block such as an `if`, loop, or `{}` block.
 
@@ -194,7 +330,11 @@ Inner scopes can access outer bindings. Outer scopes cannot access inner binding
 
 **Practical use:** Keep variables in the smallest useful scope. Modules give files their own scope and help avoid accidental global variables and naming conflicts.
 
+<a id="question-10"></a>
+
 ## 10. What is a closure, and what are its practical use cases?
+
+[Back to question index](#question-index)
 
 **Interview answer:** A closure is a function together with access to the variables from its surrounding lexical scope. It can keep using those variables after the outer function has returned.
 
@@ -215,7 +355,11 @@ Each call to `createCounter()` creates separate state. Useful cases include priv
 
 **Important:** Closures capture bindings, not a frozen copy of their values. If the captured binding changes, later calls see the change. A closure can also retain large objects in memory; remove unnecessary handlers and references when their work is finished.
 
+<a id="question-11"></a>
+
 ## 11. What is lexical scope?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Lexical scope means a function's access to variables is based on where the function is defined in the source code, not where it is called.
 
@@ -234,7 +378,11 @@ JavaScript looks for a variable in the current scope, then moves through enclosi
 
 **Connection to closures:** Lexical scope determines which outer variables a function can access. A closure preserves that access when the function is used later. Ordinary functions have lexical variable scope even though their `this` can depend on how they are called.
 
+<a id="question-12"></a>
+
 ## 12. How does the `this` keyword behave in different contexts?
+
+[Back to question index](#question-index)
 
 **Interview answer:** For a regular function, `this` usually depends on how the function is called. An arrow function takes `this` from its surrounding scope.
 
@@ -263,7 +411,11 @@ safeGreet(); // "Sam"
 
 **Important:** Passing a method as a callback can lose its receiver. In a DOM listener registered with a regular function, `this` is generally the element handling the listener; an arrow does not get that binding.
 
+<a id="question-13"></a>
+
 ## 13. What are the differences between regular functions and arrow functions?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Regular functions can have a call-dependent `this` and their own `arguments`. Arrows inherit `this` and `arguments` from the surrounding scope. Arrows cannot be called with `new` and have no own `prototype` property for construction.
 
@@ -284,7 +436,11 @@ Use arrows for short callbacks and when you want to retain surrounding `this`. U
 
 **Mistake to avoid:** Defining an object method as an arrow and expecting `this` to refer to that object. Also, `call`, `apply`, and `bind` cannot change an arrow's `this`. Some regular function forms, such as object methods and async functions, are also not constructors.
 
+<a id="question-14"></a>
+
 ## 14. What are the differences between `call()`, `apply()`, and `bind()`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** `call()` and `apply()` invoke a function immediately with a chosen `this`. `call()` takes separate arguments; `apply()` takes an array or array-like argument list. `bind()` returns a new function for later use.
 
@@ -303,7 +459,11 @@ sayHello("!"); // "Hello, Sam!"
 
 **Practical issue:** Every call to `bind()` creates a different function. Save the bound function if you need to remove an event listener later. Calling `bind()` again will not produce the same callback identity.
 
+<a id="question-15"></a>
+
 ## 15. What are higher-order functions and callbacks?
+
+[Back to question index](#question-index)
 
 **Interview answer:** A higher-order function accepts another function, returns a function, or does both. A callback is a function passed to another function so it can be called as part of that operation.
 
@@ -324,7 +484,11 @@ Array methods such as `map()` are higher-order functions. Their callback normall
 
 **Mistake to avoid:** A callback is not automatically asynchronous. Its timing is decided by the function or API receiving it. Callback-heavy async flows can be harder to compose than promises.
 
+<a id="question-16"></a>
+
 ## 16. What is currying, and when is it useful?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Currying changes a function that takes several arguments into a chain of functions that each take one argument. It is useful when we want to configure part of an operation and reuse it.
 
@@ -341,7 +505,11 @@ const isAdmin = hasRole("admin");
 
 **Follow-up:** Currying and partial application are related but different. Currying changes the function into a one-argument chain. Partial application fixes some arguments and leaves the remaining arguments for later. Use either when it makes reuse clearer; avoid long function chains that are harder to read than a simple call.
 
+<a id="question-17"></a>
+
 ## 17. What is the difference between a function declaration and a function expression?
+
+[Back to question index](#question-index)
 
 **Interview answer:** A declaration defines a named function as a statement and is generally callable before its declaration. An expression produces a function value; its availability depends on the variable or place holding that value.
 
@@ -357,7 +525,11 @@ Before the `const` declarations run, accessing `subtract` or `multiply` throws b
 
 **Practical use:** Declarations are convenient for named reusable operations. Expressions are useful for callbacks and conditional assignment. A named function expression can also improve debugging and support recursion using its internal name.
 
+<a id="question-18"></a>
+
 ## 18. What are pure functions and side effects?
+
+[Back to question index](#question-index)
 
 **Interview answer:** A pure function returns the same result for the same inputs and does not change anything outside itself. A side effect changes external state or interacts with the outside world.
 
@@ -376,7 +548,11 @@ Side effects include changing an input object, writing to storage, making an API
 
 **Practical use:** Keep calculations and transformations pure where possible, and handle side effects at clear boundaries. This makes code easier to test, reuse, and reason about. Applications still need side effects to do useful work.
 
+<a id="question-19"></a>
+
 ## 19. What are the differences between shallow copy and deep copy?
+
+[Back to question index](#question-index)
 
 **Interview answer:** A shallow copy creates a new outer object but shares nested objects. A deep copy also copies nested data, so changing copied nested objects does not change the original.
 
@@ -395,7 +571,11 @@ console.log(original.address.city); // "Pune"
 
 **Mistake to avoid:** Using JSON stringify/parse as a general deep-copy solution. It loses or changes values such as `undefined` and dates, and throws for circular structures and `BigInt`. Often a targeted immutable update is better than copying an entire large object.
 
+<a id="question-20"></a>
+
 ## 20. How do spread syntax, rest parameters, and destructuring work?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Spread expands values, rest collects remaining values, and destructuring extracts values into variables. They look related but serve different purposes.
 
@@ -417,7 +597,11 @@ Array spread needs an iterable; object spread copies own enumerable properties. 
 
 **Important:** Spread does not deep-copy nested data. Removing one field using object rest is convenient but does not replace careful validation of data sent to clients.
 
+<a id="question-21"></a>
+
 ## 21. What are the differences between `map()`, `filter()`, `reduce()`, and `forEach()`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** `map()` transforms items; `filter()` selects items; `reduce()` combines items into one result; `forEach()` runs an action for each item and returns `undefined`.
 
@@ -433,7 +617,11 @@ values.forEach(n => console.log(n)); // Return value: undefined.
 
 **Mistakes to avoid:** Forgetting `return` in a block-bodied `map()` callback; using `map()` only for side effects; and using `forEach(async ...)` expecting it to wait. These methods do not inherently mutate the source, but their callbacks can.
 
+<a id="question-22"></a>
+
 ## 22. What are the differences between `find()`, `findIndex()`, and `filter()`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** `find()` returns the first matching value, `findIndex()` returns its index, and `filter()` returns an array of all matching values.
 
@@ -448,7 +636,11 @@ If there is no match, `find()` returns `undefined`, `findIndex()` returns `-1`, 
 
 **Mistake to avoid:** Testing `if (index)` after `findIndex()`: index `0` is falsy and `-1` is truthy. Use `index !== -1`. Finding an actual `undefined` value also returns `undefined`, so use an index when that distinction matters.
 
+<a id="question-23"></a>
+
 ## 23. What are the differences between `slice()` and `splice()`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** `slice()` returns a shallow copy of part of an array without changing it. `splice()` changes the original array by removing, inserting, or replacing items.
 
@@ -465,7 +657,11 @@ console.log(values); // [10, 99, 40]
 
 **Practical use:** Use `slice()` when you need part of the data and must preserve the input. Use `splice()` for deliberate in-place updates. `toSpliced()` provides a copying alternative to `splice()` in environments that support it.
 
+<a id="question-24"></a>
+
 ## 24. How does `sort()` work, and how do you correctly sort numbers?
+
+[Back to question index](#question-index)
 
 **Interview answer:** `sort()` mutates an array. Without a comparator, it compares values as strings. For numbers, pass a comparator such as `(a, b) => a - b`.
 
@@ -482,7 +678,11 @@ A negative comparator result puts `a` before `b`; a positive result puts it afte
 
 **Mistake to avoid:** Returning only `true` or `false` from the comparator. Use a consistent comparator. `toSorted()` returns a sorted copy; exact sort complexity depends on the engine.
 
+<a id="question-25"></a>
+
 ## 25. Which common array methods mutate the original array?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Common mutating methods are `push`, `pop`, `shift`, `unshift`, `splice`, `sort`, `reverse`, `fill`, and `copyWithin`. Methods such as `map`, `filter`, `slice`, and `concat` create new arrays.
 
@@ -497,7 +697,11 @@ A negative comparator result puts `a` before `b`; a positive result puts it afte
 
 Check runtime support before using newer copying methods in older browsers.
 
+<a id="question-26"></a>
+
 ## 26. What are the differences between `some()` and `every()`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** `some()` checks whether at least one item passes a condition. `every()` checks whether all items pass. Both return a Boolean and stop once the answer is known.
 
@@ -513,7 +717,11 @@ Check runtime support before using newer copying methods in older browsers.
 
 **Follow-up:** An empty array passes `every()` because there is no item that fails. If a rule also requires at least one item, use `items.length > 0 && items.every(...)`.
 
+<a id="question-27"></a>
+
 ## 27. What are the differences between `for...in` and `for...of`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** `for...in` visits enumerable string property keys, including inherited ones. `for...of` visits values produced by an iterable, such as an array, string, map, or set.
 
@@ -532,7 +740,11 @@ Plain objects are not iterable by default. Use `Object.keys()`, `Object.values()
 
 **Mistake to avoid:** Using `for...in` for array values; it can include extra and inherited properties. If using it for an object and wanting only own properties, check `Object.hasOwn(object, key)`.
 
+<a id="question-28"></a>
+
 ## 28. What are the differences between objects, `Map`, and `Set`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Objects store named properties, maps store key-value entries with keys of any type, and sets store unique values.
 
@@ -555,7 +767,11 @@ const unique = [...new Set([1, 1, 2])]; // [1, 2]
 
 Maps and sets preserve insertion order. Their equality treats `NaN` as equal to `NaN`, and object values by identity. Objects have defined property ordering too, but integer-like keys have special ordering. Use `Object.create(null)` when you need an object dictionary without an inherited prototype.
 
+<a id="question-29"></a>
+
 ## 29. What are prototypes and prototypal inheritance?
+
+[Back to question index](#question-index)
 
 **Interview answer:** An object can have a link to another object called its prototype. When a property is not found on the object itself, JavaScript searches its prototype chain. This allows objects to share methods.
 
@@ -572,7 +788,11 @@ The chain ends at `null`. An own property can shadow an inherited property.
 
 **Follow-up:** A constructor's `.prototype` property is used as the prototype of objects created with `new`. It is different from that function object's own prototype link. Classes use this inheritance mechanism too. Prefer `Object.getPrototypeOf()` and `Object.create()` over the legacy `__proto__` accessor.
 
+<a id="question-30"></a>
+
 ## 30. What are the differences between `Object.freeze()` and `Object.seal()`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Both prevent adding or removing own properties. `seal()` still allows changing existing writable data properties. `freeze()` also makes existing data properties non-writable. Both are shallow.
 
@@ -589,7 +809,11 @@ frozen.address.city = "Pune"; // Allowed: nested object is not frozen.
 
 **Important:** These APIs do not provide general deep immutability. Freezing a `Map` does not prevent `map.set()`, and accessors may still have behavior that changes other state.
 
+<a id="question-31"></a>
+
 ## 31. How do optional chaining (`?.`) and nullish coalescing (`??`) work?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Optional chaining safely stops a property access or call when the checked value is `null` or `undefined`. Nullish coalescing provides a default only for those two values.
 
@@ -607,7 +831,11 @@ onSave?.(); // Does not call anything.
 
 Keep the chain continuous: `(user.profile?.address).city` can throw because the later access is outside the optional chain. Do not use optional chaining to quietly hide data that should always exist; validate important API contracts.
 
+<a id="question-32"></a>
+
 ## 32. What is an execution context, and how does the call stack work?
+
+[Back to question index](#question-index)
 
 **Interview answer:** An execution context holds the information JavaScript needs to run code, such as variable bindings, the surrounding scope, and `this`. The call stack tracks active function calls.
 
@@ -622,7 +850,11 @@ first();
 
 **Practical effect:** A long synchronous function keeps the stack busy and blocks other JavaScript callbacks on that thread. Unbounded recursion can overflow the stack. Async operations can finish elsewhere, but their JavaScript callbacks must wait until they can run on the thread.
 
+<a id="question-33"></a>
+
 ## 33. How does the JavaScript event loop work?
+
+[Back to question index](#question-index)
 
 **Interview answer:** The event loop coordinates running JavaScript with queued work from the host, such as browser events, timers, and completed requests. Synchronous code runs first. At microtask checkpoints, queued microtasks run before the next task.
 
@@ -638,7 +870,11 @@ In a browser, a useful model is: run a task, drain microtasks, then allow render
 
 **Important:** `setTimeout(fn, 0)` does not mean “run immediately.” It schedules later work, with host timing rules and possible delays. A continuous stream of microtasks can delay timers and rendering. Node.js has additional event-loop phases, so avoid treating every environment as identical.
 
+<a id="question-34"></a>
+
 ## 34. What are the differences between microtasks and macrotasks?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Promise reactions, `queueMicrotask()`, and async function continuations use microtasks. Timers and many browser events schedule tasks, often called macrotasks. Microtasks are drained at checkpoints before the next task runs.
 
@@ -654,7 +890,11 @@ Within that example, microtasks execute in the order they were queued. New micro
 
 **Practical issue:** Recursively adding microtasks can starve other work. Use task-based yielding or move expensive computation to a worker when appropriate. `requestAnimationFrame()` is a rendering callback mechanism; do not describe it as an ordinary timer task.
 
+<a id="question-35"></a>
+
 ## 35. What is a promise, and what are its states?
+
+[Back to question index](#question-index)
 
 **Interview answer:** A promise represents the eventual result of an operation. Its states are pending, fulfilled with a value, and rejected with a reason. Once settled, its fulfilled or rejected result cannot change.
 
@@ -671,7 +911,11 @@ The executor passed to `new Promise()` runs synchronously. Registered promise re
 
 **Follow-up:** “Resolved” does not always mean “fulfilled.” A promise resolved with another pending promise adopts its eventual state and can remain pending. Creating a promise does not move CPU work to another thread, and promises have no general built-in cancellation mechanism.
 
+<a id="question-36"></a>
+
 ## 36. How do promise chaining and error propagation work?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Every `.then()` returns a new promise. Returning a value passes it to the next handler. Returning a promise makes the chain wait for it. Throwing an error rejects the next promise, and the rejection moves through the chain until handled.
 
@@ -690,7 +934,11 @@ Promise.resolve(2)
 
 `.finally()` is for cleanup and normally preserves the original result. If it throws or returns a rejecting promise, it changes the chain to a rejection. An error handler that throws continues the rejection instead of recovering.
 
+<a id="question-37"></a>
+
 ## 37. How does `async/await` work, and how do you handle errors?
+
+[Back to question index](#question-index)
 
 **Interview answer:** An `async` function always returns a promise. `await` pauses that function until a value or promise is ready, while allowing other work on the JavaScript thread. Use `try/catch` around awaited operations and `finally` for cleanup.
 
@@ -711,7 +959,11 @@ Even an already fulfilled promise resumes the function asynchronously after `awa
 
 **Important:** Within `try/catch`, `return await operation()` lets the local catch handle the operation's rejection. `return operation()` returns it without locally awaiting the rejection. Handle errors at a useful boundary and avoid logging the same failure at every layer.
 
+<a id="question-38"></a>
+
 ## 38. What are the differences between the promise combination methods?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Choose the method based on whether you need every result, every outcome, the first settlement, or the first success.
 
@@ -730,7 +982,11 @@ const outcomes = await Promise.allSettled([saveProfile(), saveSettings()]);
 
 **Important:** These methods do not cancel the other operations when their returned promise settles. They coordinate operations you pass in; they do not create worker threads. Use `AbortController` or another API-specific mechanism when cancellation is needed.
 
+<a id="question-39"></a>
+
 ## 39. What are the differences between sequential and parallel asynchronous execution?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Sequential execution waits for one operation before starting the next. Concurrent execution starts independent operations before waiting for their results, which can reduce total waiting time.
 
@@ -750,7 +1006,11 @@ For independent waits of roughly 1 and 2 seconds, sequential execution takes rou
 
 **Important:** Concurrent network requests are often called “parallel,” but this does not mean their JavaScript runs on multiple threads. For large batches, limit concurrency to avoid server limits and resource pressure. Use `for...of` with `await` for deliberate sequential processing; `forEach()` does not await async callbacks.
 
+<a id="question-40"></a>
+
 ## 40. What are debounce and throttle, and when should you use each?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Debounce waits until calls stop for a chosen time before running. Throttle limits how often a function can run during repeated calls. Debounce suits search input; throttle suits scroll or resize work that should update regularly.
 
@@ -781,7 +1041,11 @@ function throttle(fn, interval) {
 
 **Tradeoff:** This throttle drops the final call if it arrives within the interval. Production versions may need trailing calls, cancellation, or flushing. Debouncing input does not by itself prevent stale network responses; handle request ordering too.
 
+<a id="question-41"></a>
+
 ## 41. How do you cancel a `fetch()` request using `AbortController`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Create an `AbortController`, pass its signal to `fetch()`, and call `abort()` when the request is no longer needed. Handle cancellation separately from real request failures.
 
@@ -805,7 +1069,11 @@ await pending;
 
 **Important:** An aborted signal stays aborted; create a new controller for a new request. Abort can also stop response body consumption. It does not guarantee the server stops processing or reverses a completed write. Decide whether cancellation should be ignored, returned as a separate outcome, or propagated according to your application's contract.
 
+<a id="question-42"></a>
+
 ## 42. How do you handle HTTP errors, network failures, and stale API responses?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Check HTTP status explicitly, catch network and parsing errors, and make sure an older response cannot overwrite newer results. Cancellation and a request sequence check are useful together.
 
@@ -839,7 +1107,11 @@ async function search(query) {
 
 **Production discussion:** Use clear loading, empty, success, and error states. Retry appropriate temporary failures with a limit and backoff. Avoid blindly retrying writes because that can create duplicate operations; use server-supported idempotency when needed.
 
+<a id="question-43"></a>
+
 ## 43. What are event bubbling, event capturing, and event delegation?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Capturing moves through ancestors toward the target. The target receives the event. Bubbling then moves through ancestors away from the target for events that bubble. Delegation handles events on a parent instead of attaching a listener to each child.
 
@@ -861,7 +1133,11 @@ Delegation works for children added later and reduces listener setup. `event.tar
 
 **Follow-up:** Not all events bubble. For delegated focus handling, `focusin` is useful, or use capturing for `focus`. Shadow DOM can retarget events, so event paths can matter in component systems.
 
+<a id="question-44"></a>
+
 ## 44. What are the differences between `preventDefault()` and `stopPropagation()`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** `preventDefault()` asks the browser not to perform the event's default action. `stopPropagation()` prevents the event from continuing along its propagation path. They solve different problems.
 
@@ -880,7 +1156,11 @@ Stopping propagation does not prevent a link from navigating. Preventing navigat
 
 **Follow-up:** `stopPropagation()` does not stop other listeners on the same element. `stopImmediatePropagation()` also blocks subsequent listeners there. Default prevention only works for cancelable events, and a passive listener cannot prevent default. Use propagation blocking carefully because it can break delegated handlers and shared UI behavior.
 
+<a id="question-45"></a>
+
 ## 45. What causes memory leaks in JavaScript, and how can you prevent them?
+
+[Back to question index](#question-index)
 
 **Interview answer:** A memory leak happens when data stays reachable even though the application no longer needs it. Common causes include forgotten listeners, active timers, unbounded caches, subscriptions, and retained DOM nodes.
 
@@ -903,7 +1183,11 @@ Garbage collection removes unreachable data. It does not know which reachable da
 
 **Practical debugging:** Repeat an action, take heap snapshots, compare retained objects, and inspect what holds references. Clean up subscriptions, bound callbacks, observers, and timers; limit cache size. A detached DOM node leaks only if something still retains it.
 
+<a id="question-46"></a>
+
 ## 46. How would you implement memoization using a closure?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Memoization stores previous results so repeated calls with the same input can reuse them. A closure keeps the cache private. It is most useful for expensive pure functions with repeated inputs.
 
@@ -927,7 +1211,11 @@ square(5); // Reuses 25.
 
 **Limits:** This version supports one argument and assumes the result depends only on that argument, not on `this`. Object inputs are keyed by identity, and changing an object can make the cached result stale. For production, consider size limits, eviction, multiple-argument keys, and removing cached rejected promises. Avoid using JSON serialization as a universal key strategy.
 
+<a id="question-47"></a>
+
 ## 47. How would you implement a simplified version of `Array.prototype.map()`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Create an output array, call the callback for each present source index, and store the result at the same index. Preserve holes and the initial length.
 
@@ -956,7 +1244,11 @@ mapArray([1, , 3], n => n * 2); // [2, <hole>, 6]
 
 **Limits:** This is a simplified helper for arrays, not a complete specification-compatible polyfill. Native `map()` also handles array-like receivers and subclass construction rules. Do not modify built-in prototypes just to demonstrate this in an application.
 
+<a id="question-48"></a>
+
 ## 48. How would you flatten a nested array without using `flat()`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Visit each item. If it is an array, visit its items recursively; otherwise add it to the result.
 
@@ -983,7 +1275,11 @@ flatten([]); // []
 
 **Follow-up:** Very deep input can overflow the call stack. An explicit stack avoids recursion. Cyclic arrays need a defined policy, such as detection and rejection. Ask whether the interviewer wants full flattening or a fixed depth.
 
+<a id="question-49"></a>
+
 ## 49. How would you solve Two Sum efficiently using a `Map`?
+
+[Back to question index](#question-index)
 
 **Interview answer:** While scanning the array, look for the complement `target - current` among values already seen. If found, return the two indices. Otherwise store the current value and index.
 
@@ -1006,7 +1302,11 @@ twoSum([3, 3], 6); // [0, 1]
 
 **Why check before storing?** It prevents using the current item twice and still handles duplicate values. Clarify whether the task requires indices or values, one pair or every pair, and what to return when there is no answer. Assume suitable finite numeric inputs unless told otherwise.
 
+<a id="question-50"></a>
+
 ## 50. How would you find the longest substring without repeating characters?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Use a sliding window. Store the last index of each character. If the current character already appears inside the window, move the left boundary past its previous position.
 
@@ -1044,7 +1344,11 @@ longestUniqueLength(""); // 0
 
 The following topics help move beyond definitions into the reasoning expected from a developer with 4–5 years of experience.
 
+<a id="question-51"></a>
+
 ## 51. How do ES modules work, and how are they different from CommonJS?
+
+[Back to question index](#question-index)
 
 **Interview answer:** ES modules use `import` and `export`. Imports are live, read-only bindings to exported values. CommonJS uses `require()` and `module.exports`, and loading is generally synchronous. The exact behavior also depends on the runtime.
 
@@ -1064,7 +1368,11 @@ ES modules run in strict mode and have module scope. Static imports help tools a
 
 **Follow-up:** Circular dependencies can expose bindings before they are initialized. Prefer clear dependency direction rather than relying on complicated initialization order.
 
+<a id="question-52"></a>
+
 ## 52. What happens when you use `new`, and how do classes work?
+
+[Back to question index](#question-index)
 
 **Interview answer:** `new` creates an object, links it to the constructor's prototype, runs the constructor with that object as `this`, and normally returns the object. An explicitly returned object can replace it.
 
@@ -1082,7 +1390,11 @@ Class methods are shared through the prototype. Static methods belong to the cla
 
 **Follow-up:** In a derived constructor, call `super()` before using `this`. Private fields such as `#balance` are language-enforced private state. Prefer composition when inheritance would create tightly connected classes.
 
+<a id="question-53"></a>
+
 ## 53. What are property descriptors, getters, and setters?
+
+[Back to question index](#question-index)
 
 **Interview answer:** A property descriptor controls whether a property can be written, enumerated, or reconfigured. A property can hold a value, or use getter/setter functions for reading and writing.
 
@@ -1100,7 +1412,11 @@ Data descriptors use `value` and `writable`; accessor descriptors use `get` and 
 
 **Practical issue:** A getter runs code when the property is read. Avoid expensive or surprising side effects behind ordinary-looking property access. Object spread copies the value produced by an enumerable getter, not its descriptor.
 
+<a id="question-54"></a>
+
 ## 54. How do `Object.keys()`, `values()`, and `entries()` differ?
+
+[Back to question index](#question-index)
 
 **Interview answer:** They return an object's own enumerable string keys, values, or key-value pairs. They do not include inherited properties or symbol keys.
 
@@ -1116,7 +1432,11 @@ Use `Object.hasOwn(obj, key)` to check ownership. The `in` operator checks both 
 
 **Mistake to avoid:** Calling `obj.hasOwnProperty(key)` blindly: the object might override that name or have no prototype.
 
+<a id="question-55"></a>
+
 ## 55. What are `WeakMap` and `WeakSet`, and when are they useful?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Weak collections do not keep supported keys or values alive just because they are stored in the collection. They are useful for metadata tied to an object's lifetime.
 
@@ -1132,7 +1452,11 @@ element = null;
 
 **Important:** Garbage collection is not immediate or predictable. Use explicit cleanup for timers and subscriptions; weak collections are not a general replacement for resource management.
 
+<a id="question-56"></a>
+
 ## 56. How do iterables, iterators, and generators work?
+
+[Back to question index](#question-index)
 
 **Interview answer:** An iterable provides `Symbol.iterator`, which returns an iterator. An iterator's `next()` returns `{ value, done }`. A generator is a convenient way to produce a sequence while pausing between values.
 
@@ -1149,7 +1473,11 @@ Calling a generator function creates the generator without immediately running i
 
 **Practical use:** Lazy sequences can avoid building large intermediate arrays. Async iterables work with `for await...of` for streams or sequences that produce values asynchronously.
 
+<a id="question-57"></a>
+
 ## 57. What are strict mode and accidental global variables?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Strict mode makes some mistakes throw errors instead of being silently accepted. For example, assigning to an undeclared variable throws, and a plain regular function call gets `undefined` as `this`.
 
@@ -1164,7 +1492,11 @@ ES modules and class bodies are already strict. Strict mode also rejects certain
 
 **Practical use:** Use modules, declare every variable, and use linting to catch mistakes early. A non-strict accidental global can create shared state, naming collisions, and retained data that is difficult to debug.
 
+<a id="question-58"></a>
+
 ## 58. Why is `0.1 + 0.2` not exactly `0.3`, and how should you handle numbers?
+
+[Back to question index](#question-index)
 
 **Interview answer:** JavaScript `Number` uses binary floating-point representation. Some decimal fractions cannot be represented exactly, so arithmetic can produce small rounding differences.
 
@@ -1180,7 +1512,11 @@ For approximate measurements, compare using a tolerance chosen for the size of t
 
 **Practical use:** For money, use a clear rounding policy and appropriate integer minor units or a decimal library. `BigInt` stores integers beyond the safe integer range, but it cannot be mixed directly with `Number` in arithmetic and does not represent decimal fractions.
 
+<a id="question-59"></a>
+
 ## 59. What are sparse arrays, and why do their methods behave differently?
+
+[Back to question index](#question-index)
 
 **Interview answer:** A sparse array has missing properties at some indices. A hole is different from an index containing `undefined`.
 
@@ -1198,7 +1534,11 @@ Several methods such as `map()` and `forEach()` skip absent indices. Array itera
 
 **Mistake to avoid:** `delete arr[0]` leaves a hole and does not reduce length. Use `splice()` when you intend to remove and shift an item. Prefer dense arrays unless there is a specific reason otherwise.
 
+<a id="question-60"></a>
+
 ## 60. How would you group, count, and remove duplicates from data?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Choose a key that represents equality, then use a map or set to track it. For grouping and counting, make one pass over the data.
 
@@ -1225,7 +1565,11 @@ function uniqueById(items) {
 
 Both use expected O(n) time and O(n) extra space in typical implementations. `uniqueById()` keeps the first item for each ID. Clarify first versus last, ordering, and how missing IDs should behave. `new Set(objects)` removes repeated references, not separate objects with matching contents.
 
+<a id="question-61"></a>
+
 ## 61. What is a race condition in asynchronous JavaScript?
+
+[Back to question index](#question-index)
 
 **Interview answer:** A race condition occurs when correctness depends on the timing of competing operations. JavaScript can have async races even when callbacks run on a single thread.
 
@@ -1235,7 +1579,11 @@ Use sequence numbers, cancellation, explicit queues, or server version checks ac
 
 **Important:** Preventing stale UI updates does not prevent duplicate server writes. For writes, discuss idempotency keys, transactions, or optimistic concurrency with the backend. Do not assume frontend request ordering alone protects shared server data.
 
+<a id="question-62"></a>
+
 ## 62. How do you control concurrency for many async operations?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Start only a limited number of operations at once. As each finishes, start another. This balances speed with resource and API limits.
 
@@ -1265,7 +1613,11 @@ This preserves input result order and limits in-flight tasks. The shared index i
 
 **Limit:** If a task rejects, the returned promise rejects, but other workers keep running and may start more work. Production code may need a stop flag, cancellation, or per-item outcome collection. A concurrency limit is different from a requests-per-second rate limit.
 
+<a id="question-63"></a>
+
 ## 63. How would you implement retry and timeout behavior?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Retry only failures likely to be temporary, use a bounded attempt count, and increase the delay between attempts. A timeout should cancel the underlying operation when the API supports it.
 
@@ -1287,7 +1639,11 @@ A timeout implemented only with `Promise.race()` does not cancel a losing reques
 
 **Retry discussion:** Set a maximum number of attempts, use backoff with jitter, respect server retry guidance, and stop after cancellation. Do not retry validation failures or unsafe writes blindly. Decide whether the timeout covers the entire operation or each attempt separately.
 
+<a id="question-64"></a>
+
 ## 64. How do you keep the browser responsive during expensive work?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Long synchronous work blocks input handling and rendering. Reduce unnecessary work, split large work into smaller chunks, or use a Web Worker for suitable CPU-heavy tasks.
 
@@ -1297,7 +1653,11 @@ A timeout implemented only with `Promise.race()` does not cancel a losing reques
 
 **Practical answer:** Measure first. Inspect long tasks and repeated work, choose an approach, and check whether interaction improves afterward.
 
+<a id="question-65"></a>
+
 ## 65. What are layout, paint, and common DOM performance mistakes?
+
+[Back to question index](#question-index)
 
 **Interview answer:** The browser calculates element sizes and positions during layout, draws pixels during paint, and combines layers during compositing. JavaScript changes can trigger some of this work.
 
@@ -1311,7 +1671,11 @@ Repeatedly alternating DOM writes and layout reads can force repeated synchronou
 
 **Follow-up:** `transform` and `opacity` can often animate without repeated layout, but actual behavior depends on the page and browser. Use performance tools to confirm rather than assuming every CSS property has the same cost.
 
+<a id="question-66"></a>
+
 ## 66. What are cookies, `localStorage`, `sessionStorage`, and IndexedDB?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Cookies can be sent with matching HTTP requests. `localStorage` persists key-value strings; `sessionStorage` is scoped to an origin and tab/page session. IndexedDB stores larger structured data asynchronously.
 
@@ -1324,7 +1688,11 @@ Repeatedly alternating DOM writes and layout reads can force repeated synchronou
 
 **Important:** Storage access can fail because of browser policy, quota, or other conditions. Handle errors. Browser persistence is not a guarantee that data lasts forever. A successful XSS attack can read JavaScript-accessible secrets, so do not treat local storage as a secure vault.
 
+<a id="question-67"></a>
+
 ## 67. What is CORS, and why does a browser block some requests?
+
+[Back to question index](#question-index)
 
 **Interview answer:** CORS is a browser mechanism that lets a server say which other origins may read its responses. An origin is the combination of scheme, hostname, and port.
 
@@ -1334,7 +1702,11 @@ Some cross-origin requests require an OPTIONS preflight before the browser sends
 
 CORS controls browser response access; it is not authentication and does not stop non-browser clients. Some cross-origin requests can still be sent even when JavaScript cannot read the response.
 
+<a id="question-68"></a>
+
 ## 68. What is XSS, and how can JavaScript code avoid it?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Cross-site scripting happens when attacker-controlled content runs as code in a page. Avoid inserting untrusted content as HTML or executable code.
 
@@ -1347,7 +1719,11 @@ Use safe text APIs, context-appropriate escaping, and a trusted sanitizer when r
 
 **Follow-up:** A Content Security Policy adds protection but does not replace safe coding. Validate URLs before using them as navigation targets. Discuss CSRF separately: it involves unwanted authenticated requests, not necessarily script injection.
 
+<a id="question-69"></a>
+
 ## 69. How do you handle errors well in application code?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Throw meaningful errors, handle them where a useful decision can be made, preserve details for debugging, and show users a clear message. Do not silently swallow unexpected failures.
 
@@ -1365,7 +1741,11 @@ Distinguish expected validation failures, cancellation, network problems, and pr
 
 **Follow-up:** A surrounding synchronous `try/catch` cannot catch an error thrown later by a timer callback. Promise rejections must be awaited or handled. Global error handlers are useful for reporting; they do not replace local recovery.
 
+<a id="question-70"></a>
+
 ## 70. How would you test and debug JavaScript code?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Start with the expected behavior and reproduce the issue with the smallest useful input. Test normal cases, boundary cases, and failure paths. Use breakpoints and inspect values rather than guessing.
 
@@ -1379,7 +1759,11 @@ For the coding tasks above, check:
 
 Use unit tests for isolated logic, integration tests for boundaries, and a few end-to-end tests for key user flows. Fake timers can make timing tests predictable. Profile performance and memory with browser tools when the issue is about speed or retained data.
 
+<a id="question-71"></a>
+
 ## 71. How do you explain time and space complexity?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Time complexity describes how work grows as input grows. Space complexity describes how extra memory grows. Explain the operations that cause the growth instead of only giving a label.
 
@@ -1393,7 +1777,11 @@ Use unit tests for isolated logic, integration tests for boundaries, and a few e
 
 Big-O describes growth, not exact speed. Constants, data size, engine behavior, and allocation also affect real performance.
 
+<a id="question-72"></a>
+
 ## 72. How do you choose mutation versus immutable updates?
+
+[Back to question index](#question-index)
 
 **Interview answer:** Mutation changes existing data. An immutable update creates changed data while preserving the old value. I choose based on ownership, state management, performance, and whether other code shares the data.
 
@@ -1408,7 +1796,11 @@ This copies the path being changed while sharing unchanged data. It is often mor
 
 **Tradeoff:** Copying has a cost. Local mutation inside a function can be perfectly reasonable if it does not change shared inputs. Be explicit about who owns the data and which references are shared.
 
+<a id="question-73"></a>
+
 ## 73. What output questions should you be able to explain?
+
+[Back to question index](#question-index)
 
 Explain the rule before giving the output.
 
@@ -1442,7 +1834,11 @@ console.log(a.nested.count, a === b); // 2, false
 
 Run these as separate examples. If you run them together, previously scheduled timers and microtasks also affect the combined output.
 
+<a id="question-74"></a>
+
 ## 74. Which additional coding exercises should you practice?
+
+[Back to question index](#question-index)
 
 Practice writing and explaining these without copying a solution:
 
@@ -1459,7 +1855,11 @@ Practice writing and explaining these without copying a solution:
 
 For every exercise, state the input contract, explain the approach, write it, test boundaries, and discuss complexity. A correct explanation and working edge cases matter more than a clever one-line answer.
 
+<a id="question-75"></a>
+
 ## 75. What should a developer with 4–5 years of experience explain beyond syntax?
+
+[Back to question index](#question-index)
 
 **Interview answer:** I should explain why I chose an approach, how it behaves when something fails, how I tested it, and what tradeoffs it has. I should connect language knowledge to real product behavior.
 

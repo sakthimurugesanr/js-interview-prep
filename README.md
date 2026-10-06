@@ -1,24 +1,226 @@
 # JavaScript Interview Questions & Experience Level
 
+<a id="question-index"></a>
+
+## Question Index
+
+Click any question to jump directly to its answer. Each answer has a link back to this index.
+
+### Variables & Scope
+
+- [What are the differences between var, let, and const?](#question-1)
+- [What are global, function, and block scope?](#question-2)
+- [What is hoisting, and how does it affect variables and functions?](#question-3)
+- [What is the temporal dead zone?](#question-4)
+- [Can you modify an object or array declared with const?](#question-5)
+- [What are JavaScript's primitive and non-primitive data types?](#question-6)
+- [What is the difference between null and undefined?](#question-7)
+- [Why does typeof null return "object"?](#question-8)
+- [What is the difference between ==, ===, and Object.is()?](#question-9)
+- [What are truthy and falsy values?](#question-10)
+- [What is the difference between implicit and explicit type conversion?](#question-11)
+- [How does + behave with numbers and strings?](#question-12)
+- [What is NaN, and how do isNaN() and Number.isNaN() differ?](#question-13)
+- [What is the difference between || and ???](#question-14)
+- [How does optional chaining (?.) work?](#question-15)
+- [What is short-circuit evaluation?](#question-16)
+- [What is the difference between passing a primitive value and passing an object to a function?](#question-17)
+- [Why is 0.1 + 0.2 !== 0.3, and how would you handle decimal calculations?](#question-18)
+- [What are Symbol and BigInt, and when would you use them?](#question-19)
+- [What is the difference between typeof, instanceof, and Array.isArray()?](#question-20)
+
+### Functions, Scope & Closures
+
+- [What is the difference between a function declaration and a function expression?](#question-21)
+- [How do arrow functions differ from regular functions?](#question-22)
+- [What is lexical scope?](#question-23)
+- [What is a closure?](#question-24)
+- [What are practical uses of closures?](#question-25)
+- [How can closures accidentally retain unnecessary memory?](#question-26)
+- [What is the difference between parameters and arguments?](#question-27)
+- [How do default parameters work?](#question-28)
+- [What is the difference between rest parameters and spread syntax?](#question-29)
+- [What is a callback function?](#question-30)
+- [What is a higher-order function?](#question-31)
+- [What is a pure function?](#question-32)
+- [What are side effects?](#question-33)
+- [What is an immediately invoked function expression?](#question-34)
+- [What is function currying?](#question-35)
+- [What is the difference between currying and partial application?](#question-36)
+- [What is recursion, and why is a base case necessary?](#question-37)
+- [What is memoization, and when is it useful?](#question-38)
+- [How would you implement a function that runs only once?](#question-39)
+- [How would you compose multiple functions?](#question-40)
+- [What is a stale closure, and where can it cause bugs?](#question-41)
+- [How do var and let behave differently inside loops containing callbacks?](#question-42)
+
+### this, Objects & Prototypes
+
+- [How is this determined in a regular function?](#question-43)
+- [How does an arrow function obtain its this value?](#question-44)
+- [What happens to this when an object method is assigned to a separate variable?](#question-45)
+- [What are the differences between call(), apply(), and bind()?](#question-46)
+- [Can call(), apply(), or bind() change an arrow function's this?](#question-47)
+- [What happens when a function is called with new?](#question-48)
+- [What is the difference between a constructor function and a class?](#question-49)
+- [What is a prototype?](#question-50)
+- [How does the prototype chain work?](#question-51)
+- [What is the difference between a constructor's .prototype and an object's internal prototype?](#question-52)
+- [What is the difference between an own property and an inherited property?](#question-53)
+- [How do Object.hasOwn() and the in operator differ?](#question-54)
+- [What is the difference between Object.create() and an object literal?](#question-55)
+- [What are property descriptors?](#question-56)
+- [What are getters and setters?](#question-57)
+- [What is the difference between Object.freeze(), Object.seal(), and Object.preventExtensions()?](#question-58)
+- [Does Object.freeze() freeze nested objects?](#question-59)
+- [What is the difference between static methods and instance methods?](#question-60)
+- [How do extends and super work?](#question-61)
+- [What are private class fields?](#question-62)
+- [Why can modifying built-in prototypes cause problems?](#question-63)
+- [What is prototype pollution?](#question-64)
+
+### Arrays, Strings & Data Transformation
+
+- [What is the difference between map(), forEach(), filter(), and reduce()?](#question-65)
+- [What is the difference between find() and filter()?](#question-66)
+- [What is the difference between findIndex(), indexOf(), and includes()?](#question-67)
+- [What is the difference between some() and every()?](#question-68)
+- [What is the difference between slice() and splice()?](#question-69)
+- [Which common array methods mutate the original array?](#question-70)
+- [Why does numeric sorting need a comparator?](#question-71)
+- [What is the difference between sort() and toSorted()?](#question-72)
+- [How do flat() and flatMap() differ?](#question-73)
+- [What is a sparse array, and how do array methods handle empty slots?](#question-74)
+- [What is the difference between for...in and for...of?](#question-75)
+- [When would you use a normal loop instead of an array method?](#question-76)
+- [How do you remove duplicates while preserving order?](#question-77)
+- [How do you group an array of objects by a property?](#question-78)
+- [How do you calculate totals using reduce()?](#question-79)
+- [What are object and array destructuring?](#question-80)
+- [How do destructuring defaults behave with null and undefined?](#question-81)
+- [What is the difference between Object.keys(), Object.values(), and Object.entries()?](#question-82)
+- [What is the difference between Map and a plain object?](#question-83)
+- [What is the difference between Map and Set?](#question-84)
+- [What are WeakMap and WeakSet, and when are they useful?](#question-85)
+- [What is the difference between a shallow copy and a deep copy?](#question-86)
+- [What are the limitations of cloning with JSON.parse(JSON.stringify(value))?](#question-87)
+- [What can structuredClone() clone, and what can it not clone?](#question-88)
+- [Are JavaScript strings mutable?](#question-89)
+- [What is the difference between substring() and slice()?](#question-90)
+- [How do replace() and replaceAll() differ?](#question-91)
+- [Why can reversing a string with split("") produce incorrect results for some Unicode characters?](#question-92)
+
+### Promises, Async/Await & Event Loop
+
+- [Is JavaScript single-threaded, and how can it handle asynchronous operations?](#question-93)
+- [What are the call stack, task queue, and microtask queue?](#question-94)
+- [How does the event loop work?](#question-95)
+- [What is the difference between synchronous and asynchronous execution?](#question-96)
+- [Why does setTimeout(callback, 0) not execute immediately?](#question-97)
+- [What is the execution order of synchronous code, Promise callbacks, and timers?](#question-98)
+- [What happens when a microtask schedules another microtask?](#question-99)
+- [How can long-running JavaScript block the browser UI?](#question-100)
+- [What is callback hell, and how can it be avoided?](#question-101)
+- [What are the states of a Promise?](#question-102)
+- [Does a Promise executor run synchronously or asynchronously?](#question-103)
+- [What do .then(), .catch(), and .finally() return?](#question-104)
+- [How does returning a value or Promise from .then() affect the chain?](#question-105)
+- [How are thrown errors propagated through a Promise chain?](#question-106)
+- [What happens if you forget to return a Promise inside .then()?](#question-107)
+- [What are the differences between Promise.all(), allSettled(), race(), and any()?](#question-108)
+- [Does Promise.all() cancel the remaining operations when one rejects?](#question-109)
+- [Does Promise.all() preserve input order in its results?](#question-110)
+- [What happens when each Promise combinator receives an empty iterable?](#question-111)
+- [What is an AggregateError?](#question-112)
+- [What does an async function always return?](#question-113)
+- [Does await block the entire JavaScript thread?](#question-114)
+- [How do you handle errors with async/await?](#question-115)
+- [What is the difference between sequential and concurrent asynchronous operations?](#question-116)
+- [Why does forEach(async () => ...) not wait for its callbacks?](#question-117)
+- [How would you process asynchronous tasks sequentially?](#question-118)
+- [How would you limit the number of concurrent asynchronous tasks?](#question-119)
+- [Can a Promise itself be cancelled, and how does AbortController help cancel an operation?](#question-120)
+
+### API Handling & Production Scenarios
+
+- [Does fetch() reject automatically for HTTP errors such as 404 or 500?](#question-121)
+- [How do you distinguish network failures, HTTP failures, and response-parsing failures?](#question-122)
+- [Why should you check response.ok?](#question-123)
+- [Can you read a response body more than once?](#question-124)
+- [How do you cancel an API request?](#question-125)
+- [How do you prevent an older API response from overwriting newer results?](#question-126)
+- [How would you implement request timeouts?](#question-127)
+- [What is exponential backoff?](#question-128)
+- [Why should retry logic include jitter?](#question-129)
+- [Which requests are safe to retry, and how does idempotency affect that decision?](#question-130)
+- [How should a client handle 429 Too Many Requests and Retry-After?](#question-131)
+- [How would you prevent duplicate API requests?](#question-132)
+- [How would you cache API results and expire stale entries?](#question-133)
+- [How would you implement debounced search?](#question-134)
+- [How would you combine debouncing with cancellation of previous requests?](#question-135)
+- [How would you fetch independent resources concurrently?](#question-136)
+- [How would you display partial results when some requests fail?](#question-137)
+- [How would you prevent multiple simultaneous token-refresh requests?](#question-138)
+- [How would you handle pagination and prevent duplicate records?](#question-139)
+- [How would you implement optimistic updates and rollback on failure?](#question-140)
+
+### DOM, Events & Browser APIs
+
+- [What is the DOM?](#question-141)
+- [What is the difference between querySelector() and querySelectorAll()?](#question-142)
+- [What is the difference between a live collection and a static collection?](#question-143)
+- [What is the difference between textContent, innerText, and innerHTML?](#question-144)
+- [What are event capturing, target, and bubbling phases?](#question-145)
+- [What is event delegation, and when is it useful?](#question-146)
+- [What is the difference between event.target and event.currentTarget?](#question-147)
+- [What is the difference between preventDefault(), stopPropagation(), and stopImmediatePropagation()?](#question-148)
+- [Why must you preserve the callback reference when removing an event listener?](#question-149)
+- [What do the once, passive, and signal listener options do?](#question-150)
+- [How do you handle events on dynamically added elements?](#question-151)
+- [What is the difference between debounce and throttle?](#question-152)
+- [How does requestAnimationFrame() differ from setTimeout()?](#question-153)
+- [What is IntersectionObserver, and how would you use it for infinite scrolling?](#question-154)
+- [What is ResizeObserver, and when is it useful?](#question-155)
+- [What is the difference between localStorage, sessionStorage, and cookies?](#question-156)
+- [Why should browser storage not be treated as secure storage?](#question-157)
+- [What is the same-origin policy?](#question-158)
+- [What is CORS, and why does using mode: "no-cors" not solve ordinary cross-origin API access?](#question-159)
+- [How does postMessage() work, and why should you validate the sender's origin?](#question-160)
+
+### Modules, Errors, Memory & Performance
+
+- [What is the difference between named exports and default exports?](#question-161)
+- [What is the difference between static imports and dynamic import()?](#question-162)
+- [What are live bindings in ES modules?](#question-163)
+- [What can go wrong with circular module dependencies?](#question-164)
+- [What is strict mode, and how does it change JavaScript behavior?](#question-165)
+- [What is the difference between throw new Error() and throwing a string?](#question-166)
+- [What does finally do, and how can a return inside it change the result?](#question-167)
+- [When does try...catch fail to catch an asynchronous error?](#question-168)
+- [What are iterables and iterators?](#question-169)
+- [What are generator functions, and how does yield work?](#question-170)
+- [How does garbage collection relate to object reachability?](#question-171)
+- [What commonly causes memory leaks in frontend applications?](#question-172)
+- [How can timers and event listeners retain memory after a component is removed?](#question-173)
+- [How would you prevent a memoization cache from growing indefinitely?](#question-174)
+- [What is the difference between a Web Worker and a Service Worker?](#question-175)
+- [When would you move work into a Web Worker?](#question-176)
+- [How would you split a long-running task to keep the page responsive?](#question-177)
+- [What are time complexity and space complexity?](#question-178)
+- [How would you identify and fix an unnecessary nested loop?](#question-179)
+- [How would you investigate a slow function or memory leak using browser developer tools?](#question-180)
+
+
 Comprehensive JavaScript interview questions with detailed, experience-based answers from real-world scenarios.
 
-## Table of Contents
-
-- [Variables & Scope](#variables--scope)
-- [Data Types & Type Coercion](#data-types--type-coercion)
-- [Functions, Scope & Closures](#functions--scope--closures)
-- [this, Objects & Prototypes](#this-objects--prototypes)
-- [Arrays, Strings & Data Transformation](#arrays-strings--data-transformation)
-- [Promises, Async/Await & Event Loop](#promises-asyncawait--event-loop)
-- [API Handling & Production Scenarios](#api-handling--production-scenarios)
-- [DOM, Events & Browser APIs](#dom-events--browser-apis)
-- [Modules, Errors, Memory & Performance](#modules-errors-memory--performance)
-
----
 
 ## Variables & Scope
 
+<a id="question-1"></a>
+
 ### What are the differences between var, let, and const?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -57,7 +259,11 @@ x = 20; // Error: Assignment to constant variable
 
 ---
 
+<a id="question-2"></a>
+
 ### What are global, function, and block scope?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -92,7 +298,11 @@ console.log(blockScoped); // Error: Not defined
 
 ---
 
+<a id="question-3"></a>
+
 ### What is hoisting, and how does it affect variables and functions?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -123,7 +333,11 @@ let myLet = 10;
 
 ---
 
+<a id="question-4"></a>
+
 ### What is the temporal dead zone?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -140,7 +354,11 @@ console.log(myVar); // 10
 
 ---
 
+<a id="question-5"></a>
+
 ### Can you modify an object or array declared with const?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -162,7 +380,11 @@ numbers = [5, 6]; // Error: Cannot reassign
 
 ---
 
+<a id="question-6"></a>
+
 ### What are JavaScript's primitive and non-primitive data types?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -193,7 +415,11 @@ let arr = [1, 2, 3]; // Non-primitive
 
 ---
 
+<a id="question-7"></a>
+
 ### What is the difference between null and undefined?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -225,7 +451,11 @@ console.log(null == undefined); // true
 
 ---
 
+<a id="question-8"></a>
+
 ### Why does typeof null return "object"?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -244,7 +474,11 @@ if (x && typeof x === "object") { /* check for object, not null */ }
 
 ---
 
+<a id="question-9"></a>
+
 ### What is the difference between ==, ===, and Object.is()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -272,7 +506,11 @@ Object.is(null, null); // true
 
 ---
 
+<a id="question-10"></a>
+
 ### What are truthy and falsy values?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -302,7 +540,11 @@ if ({}) { /* runs - empty object is truthy! */ }
 
 ---
 
+<a id="question-11"></a>
+
 ### What is the difference between implicit and explicit type conversion?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -326,7 +568,11 @@ parseInt("5px"); // 5
 
 ---
 
+<a id="question-12"></a>
+
 ### How does + behave with numbers and strings?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -347,7 +593,11 @@ The `+` operator is tricky:
 
 ---
 
+<a id="question-13"></a>
+
 ### What is NaN, and how do isNaN() and Number.isNaN() differ?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -376,7 +626,11 @@ Number.isNaN(Number("hello")); // true
 
 ---
 
+<a id="question-14"></a>
+
 ### What is the difference between || and ???
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -402,7 +656,11 @@ false ?? "default"; // false (false is not null/undefined)
 
 ---
 
+<a id="question-15"></a>
+
 ### How does optional chaining (?.) work?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -426,7 +684,11 @@ user?.address?.city; // "NYC"
 
 ---
 
+<a id="question-16"></a>
+
 ### What is short-circuit evaluation?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -454,7 +716,11 @@ This pattern is cleaner than nested if statements and prevents errors from missi
 
 ---
 
+<a id="question-17"></a>
+
 ### What is the difference between passing a primitive value and passing an object to a function?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -482,7 +748,11 @@ console.log(person.name); // "Changed"
 
 ---
 
+<a id="question-18"></a>
+
 ### Why is 0.1 + 0.2 !== 0.3, and how would you handle decimal calculations?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -515,7 +785,11 @@ new Decimal(0.1).plus(0.2).toNumber(); // 0.3
 
 ---
 
+<a id="question-19"></a>
+
 ### What are Symbol and BigInt, and when would you use them?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -546,7 +820,11 @@ Use BigInt for very large numbers (database IDs, timestamps, crypto).
 
 ---
 
+<a id="question-20"></a>
+
 ### What is the difference between typeof, instanceof, and Array.isArray()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -591,7 +869,11 @@ Array.isArray("hello"); // false
 
 ## Functions, Scope & Closures
 
+<a id="question-21"></a>
+
 ### What is the difference between a function declaration and a function expression?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -634,7 +916,11 @@ const sayBye = function() { };
 
 ---
 
+<a id="question-22"></a>
+
 ### How do arrow functions differ from regular functions?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -680,7 +966,11 @@ const square = x => x * x; // Single param, no parens
 
 ---
 
+<a id="question-23"></a>
+
 ### What is lexical scope?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -703,7 +993,11 @@ outer();
 
 ---
 
+<a id="question-24"></a>
+
 ### What is a closure?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -737,7 +1031,11 @@ Once, I had a bug where an event handler always used the initial state value ins
 
 ---
 
+<a id="question-25"></a>
+
 ### What are practical uses of closures?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -791,7 +1089,11 @@ function setup() {
 
 ---
 
+<a id="question-26"></a>
+
 ### How can closures accidentally retain unnecessary memory?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -837,7 +1139,11 @@ function createHandler() {
 
 ---
 
+<a id="question-27"></a>
+
 ### What is the difference between parameters and arguments?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -857,7 +1163,11 @@ greet("John", 25); // "John" and 25 are arguments
 
 ---
 
+<a id="question-28"></a>
+
 ### How do default parameters work?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -891,7 +1201,11 @@ This makes the function more robust and self-documenting.
 
 ---
 
+<a id="question-29"></a>
+
 ### What is the difference between rest parameters and spread syntax?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -926,7 +1240,11 @@ sum(...arr); // 6
 
 ---
 
+<a id="question-30"></a>
+
 ### What is a callback function?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -952,7 +1270,11 @@ I once had "callback hell" with nested callbacks for sequential API calls. I ref
 
 ---
 
+<a id="question-31"></a>
+
 ### What is a higher-order function?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -989,7 +1311,11 @@ They make code reusable and composable.
 
 ---
 
+<a id="question-32"></a>
+
 ### What is a pure function?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1021,7 +1347,11 @@ function addAndLog(a, b) {
 
 ---
 
+<a id="question-33"></a>
+
 ### What are side effects?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1053,7 +1383,11 @@ function updateDOM() {
 
 ---
 
+<a id="question-34"></a>
+
 ### What is an immediately invoked function expression?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1085,7 +1419,11 @@ In modern code, I mostly use ES6 modules instead, but IIFEs are still useful for
 
 ---
 
+<a id="question-35"></a>
+
 ### What is function currying?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1125,7 +1463,11 @@ This is useful for function composition and creating reusable, configurable func
 
 ---
 
+<a id="question-36"></a>
+
 ### What is the difference between currying and partial application?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1164,7 +1506,11 @@ const createUser = partial(apiCall, 'POST', '/users');
 
 ---
 
+<a id="question-37"></a>
+
 ### What is recursion, and why is a base case necessary?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1197,7 +1543,11 @@ In production, I prefer iteration for simple cases to avoid stack overflow, but 
 
 ---
 
+<a id="question-38"></a>
+
 ### What is memoization, and when is it useful?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1237,7 +1587,11 @@ In a React app, I used `useMemo` hook to memoize expensive calculations in rende
 
 ---
 
+<a id="question-39"></a>
+
 ### How would you implement a function that runs only once?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1274,7 +1628,11 @@ In a project, I used `once` to ensure analytics tracking code only ran once even
 
 ---
 
+<a id="question-40"></a>
+
 ### How would you compose multiple functions?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1319,7 +1677,11 @@ This makes code declarative and easy to test (each function can be tested indepe
 
 ---
 
+<a id="question-41"></a>
+
 ### What is a stale closure, and where can it cause bugs?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1364,7 +1726,11 @@ Fix: Add dependencies or use functional updates.
 
 ---
 
+<a id="question-42"></a>
+
 ### How do var and let behave differently inside loops containing callbacks?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1397,7 +1763,11 @@ for (var i = 0; i < 3; i++) {
 
 ## this, Objects & Prototypes
 
+<a id="question-43"></a>
+
 ### How is this determined in a regular function?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1430,7 +1800,11 @@ new showThis(); // new instance
 
 ---
 
+<a id="question-44"></a>
+
 ### How does an arrow function obtain its this value?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1463,7 +1837,11 @@ This is cleaner than `this.handleClick = this.handleClick.bind(this)` in the con
 
 ---
 
+<a id="question-45"></a>
+
 ### What happens to this when an object method is assigned to a separate variable?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1504,7 +1882,11 @@ const obj = {
 
 ---
 
+<a id="question-46"></a>
+
 ### What are the differences between call(), apply(), and bind()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1536,7 +1918,11 @@ boundGreet("!"); // Hello John !
 
 ---
 
+<a id="question-47"></a>
+
 ### Can call(), apply(), or bind() change an arrow function's this?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1557,7 +1943,11 @@ bound(); // Still original this
 
 ---
 
+<a id="question-48"></a>
+
 ### What happens when a function is called with new?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1585,7 +1975,11 @@ console.log(name); // "Jane" (polluted global!)
 
 ---
 
+<a id="question-49"></a>
+
 ### What is the difference between a constructor function and a class?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1624,7 +2018,11 @@ class Person {
 
 ---
 
+<a id="question-50"></a>
+
 ### What is a prototype?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1643,7 +2041,11 @@ console.log(person.hasOwnProperty("name")); // true (inherited)
 
 ---
 
+<a id="question-51"></a>
+
 ### How does the prototype chain work?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1666,7 +2068,11 @@ child.d; // undefined (not found anywhere)
 
 ---
 
+<a id="question-52"></a>
+
 ### What is the difference between a constructor's .prototype and an object's internal prototype?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1690,7 +2096,11 @@ Object.getPrototypeOf(john) === Person.prototype; // true
 
 ---
 
+<a id="question-53"></a>
+
 ### What is the difference between an own property and an inherited property?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1711,7 +2121,11 @@ obj.hasOwnProperty("toString"); // false
 
 ---
 
+<a id="question-54"></a>
+
 ### How do Object.hasOwn() and the in operator differ?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1733,7 +2147,11 @@ const obj = { name: "John" };
 
 ---
 
+<a id="question-55"></a>
+
 ### What is the difference between Object.create() and an object literal?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1753,7 +2171,11 @@ obj.greet(); // Works
 
 ---
 
+<a id="question-56"></a>
+
 ### What are property descriptors?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1777,7 +2199,11 @@ delete obj.name; // Fails
 
 ---
 
+<a id="question-57"></a>
+
 ### What are getters and setters?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1810,7 +2236,11 @@ In Vue.js, computed properties use this pattern extensively.
 
 ---
 
+<a id="question-58"></a>
+
 ### What is the difference between Object.freeze(), Object.seal(), and Object.preventExtensions()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1845,7 +2275,11 @@ obj.a = 3; // Fails
 
 ---
 
+<a id="question-59"></a>
+
 ### Does Object.freeze() freeze nested objects?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1876,7 +2310,11 @@ function deepFreeze(obj) {
 
 ---
 
+<a id="question-60"></a>
+
 ### What is the difference between static methods and instance methods?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1910,7 +2348,11 @@ Calculator.add(1, 2); // Error
 
 ---
 
+<a id="question-61"></a>
+
 ### How do extends and super work?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1947,7 +2389,11 @@ class Dog extends Animal {
 
 ---
 
+<a id="question-62"></a>
+
 ### What are private class fields?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -1976,7 +2422,11 @@ account.getBalance(); // 100
 
 ---
 
+<a id="question-63"></a>
+
 ### Why can modifying built-in prototypes cause problems?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2001,7 +2451,11 @@ Array.prototype.map = function() {
 
 ---
 
+<a id="question-64"></a>
+
 ### What is prototype pollution?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2028,7 +2482,11 @@ merge(user, malicious);
 
 ## Arrays, Strings & Data Transformation
 
+<a id="question-65"></a>
+
 ### What is the difference between map(), forEach(), filter(), and reduce()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2058,7 +2516,11 @@ const sum = nums.reduce((acc, x) => acc + x, 0); // 6
 
 ---
 
+<a id="question-66"></a>
+
 ### What is the difference between find() and filter()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2077,7 +2539,11 @@ const filtered = nums.filter(x => x === 2); // [2, 2]
 
 ---
 
+<a id="question-67"></a>
+
 ### What is the difference between findIndex(), indexOf(), and includes()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2104,7 +2570,11 @@ nums.includes(4); // false
 
 ---
 
+<a id="question-68"></a>
+
 ### What is the difference between some() and every()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2125,7 +2595,11 @@ nums.every(x => x > 2); // false
 
 ---
 
+<a id="question-69"></a>
+
 ### What is the difference between slice() and splice()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2148,7 +2622,11 @@ console.log(spliced); // [2, 3, 4] (removed elements)
 
 ---
 
+<a id="question-70"></a>
+
 ### Which common array methods mutate the original array?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2171,7 +2649,11 @@ console.log(spliced); // [2, 3, 4] (removed elements)
 
 ---
 
+<a id="question-71"></a>
+
 ### Why does numeric sorting need a comparator?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2190,7 +2672,11 @@ nums.sort((a, b) => a - b); // [1, 2, 10, 20] (numeric sort)
 
 ---
 
+<a id="question-72"></a>
+
 ### What is the difference between sort() and toSorted()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2213,7 +2699,11 @@ console.log(sorted); // [1, 2, 3]
 
 ---
 
+<a id="question-73"></a>
+
 ### How do flat() and flatMap() differ?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2236,7 +2726,11 @@ arr.flatMap(x => [x, x * 2]); // [1, 2, 2, 4, 3, 6]
 
 ---
 
+<a id="question-74"></a>
+
 ### What is a sparse array, and how do array methods handle empty slots?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2258,7 +2752,11 @@ sparse.forEach(x => console.log(x)); // Logs 1, 4 (skips empties)
 
 ---
 
+<a id="question-75"></a>
+
 ### What is the difference between for...in and for...of?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2281,7 +2779,11 @@ for (const val of arr) {
 
 ---
 
+<a id="question-76"></a>
+
 ### When would you use a normal loop instead of an array method?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2305,7 +2807,11 @@ arr.find(x => x === target); // Always iterates all
 
 ---
 
+<a id="question-77"></a>
+
 ### How do you remove duplicates while preserving order?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2331,7 +2837,11 @@ const unique = arr.reduce((acc, item) => {
 
 ---
 
+<a id="question-78"></a>
+
 ### How do you group an array of objects by a property?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2357,7 +2867,11 @@ const grouped = users.reduce((acc, user) => {
 
 ---
 
+<a id="question-79"></a>
+
 ### How do you calculate totals using reduce()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2392,7 +2906,11 @@ const totals = sales.reduce((acc, sale) => {
 
 ---
 
+<a id="question-80"></a>
+
 ### What are object and array destructuring?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2420,7 +2938,11 @@ const { name: userName, age: userAge } = user;
 
 ---
 
+<a id="question-81"></a>
+
 ### How do destructuring defaults behave with null and undefined?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2437,7 +2959,11 @@ const { name = "Guest" } = { name: undefined }; // name = "Guest"
 
 ---
 
+<a id="question-82"></a>
+
 ### What is the difference between Object.keys(), Object.values(), and Object.entries()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2461,7 +2987,11 @@ Object.entries(obj); // [["a", 1], ["b", 2]]
 
 ---
 
+<a id="question-83"></a>
+
 ### What is the difference between Map and a plain object?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2489,7 +3019,11 @@ obj[{}] = "value"; // Creates string key "[object Object]"
 
 ---
 
+<a id="question-84"></a>
+
 ### What is the difference between Map and Set?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2512,7 +3046,11 @@ set.has(1); // true
 
 ---
 
+<a id="question-85"></a>
+
 ### What are WeakMap and WeakSet, and when are they useful?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2541,7 +3079,11 @@ obj = null; // Can be garbage collected
 
 ---
 
+<a id="question-86"></a>
+
 ### What is the difference between a shallow copy and a deep copy?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2564,7 +3106,11 @@ console.log(original.nested.b); // 2 (unchanged)
 
 ---
 
+<a id="question-87"></a>
+
 ### What are the limitations of cloning with JSON.parse(JSON.stringify(value))?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2594,7 +3140,11 @@ console.log(cloned.undef); // missing
 
 ---
 
+<a id="question-88"></a>
+
 ### What can structuredClone() clone, and what can it not clone?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2629,7 +3179,11 @@ console.log(cloned.fn); // undefined
 
 ---
 
+<a id="question-89"></a>
+
 ### Are JavaScript strings mutable?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2648,7 +3202,11 @@ console.log(str); // "HELLO"
 
 ---
 
+<a id="question-90"></a>
+
 ### What is the difference between substring() and slice()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2670,7 +3228,11 @@ str.slice(1, -1); // "ell"
 
 ---
 
+<a id="question-91"></a>
+
 ### How do replace() and replaceAll() differ?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2690,7 +3252,11 @@ str.replaceAll("hello", "hi"); // "hi world hi"
 
 ---
 
+<a id="question-92"></a>
+
 ### Why can reversing a string with split("") produce incorrect results for some Unicode characters?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2714,7 +3280,11 @@ console.log(reversed); // "👋 olleh" (correct!)
 
 ## Promises, Async/Await & Event Loop
 
+<a id="question-93"></a>
+
 ### Is JavaScript single-threaded, and how can it handle asynchronous operations?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2736,7 +3306,11 @@ console.log("3");
 
 ---
 
+<a id="question-94"></a>
+
 ### What are the call stack, task queue, and microtask queue?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2763,7 +3337,11 @@ Promise.resolve().then(() => console.log("microtask"));
 
 ---
 
+<a id="question-95"></a>
+
 ### How does the event loop work?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2785,7 +3363,11 @@ console.log("end");
 
 ---
 
+<a id="question-96"></a>
+
 ### What is the difference between synchronous and asynchronous execution?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2809,7 +3391,11 @@ console.log("3"); // Runs immediately
 
 ---
 
+<a id="question-97"></a>
+
 ### Why does setTimeout(callback, 0) not execute immediately?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2826,7 +3412,11 @@ console.log("3");
 
 ---
 
+<a id="question-98"></a>
+
 ### What is the execution order of synchronous code, Promise callbacks, and timers?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2847,7 +3437,11 @@ console.log("sync 2");
 
 ---
 
+<a id="question-99"></a>
+
 ### What happens when a microtask schedules another microtask?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2868,7 +3462,11 @@ setTimeout(() => console.log("timer"), 0);
 
 ---
 
+<a id="question-100"></a>
+
 ### How can long-running JavaScript block the browser UI?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2894,7 +3492,11 @@ heavy();
 
 ---
 
+<a id="question-101"></a>
+
 ### What is callback hell, and how can it be avoided?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2939,7 +3541,11 @@ await notifyUser(saved);
 
 ---
 
+<a id="question-102"></a>
+
 ### What are the states of a Promise?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2962,7 +3568,11 @@ const promise = new Promise((resolve, reject) => {
 
 ---
 
+<a id="question-103"></a>
+
 ### Does a Promise executor run synchronously or asynchronously?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -2989,7 +3599,11 @@ promise.then((value) => console.log(value));
 
 ---
 
+<a id="question-104"></a>
+
 ### What do .then(), .catch(), and .finally() return?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3007,7 +3621,11 @@ Promise.resolve(1)
 
 ---
 
+<a id="question-105"></a>
+
 ### How does returning a value or Promise from .then() affect the chain?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3030,7 +3648,11 @@ Promise.resolve()
 
 ---
 
+<a id="question-106"></a>
+
 ### How are thrown errors propagated through a Promise chain?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3056,7 +3678,11 @@ Promise.resolve()
 
 ---
 
+<a id="question-107"></a>
+
 ### What happens if you forget to return a Promise inside .then()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3087,7 +3713,11 @@ Promise.resolve()
 
 ---
 
+<a id="question-108"></a>
+
 ### What are the differences between Promise.all(), allSettled(), race(), and any()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3121,7 +3751,11 @@ Promise.any([p1, p2, p3])
 
 ---
 
+<a id="question-109"></a>
+
 ### Does Promise.all() cancel the remaining operations when one rejects?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3141,7 +3775,11 @@ Promise.all([p1, p2, p3])
 
 ---
 
+<a id="question-110"></a>
+
 ### Does Promise.all() preserve input order in its results?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3160,7 +3798,11 @@ Promise.all([p1, p2, p3])
 
 ---
 
+<a id="question-111"></a>
+
 ### What happens when each Promise combinator receives an empty iterable?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3188,7 +3830,11 @@ Promise.any([]).catch(err => console.log(err)); // AggregateError
 
 ---
 
+<a id="question-112"></a>
+
 ### What is an AggregateError?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3209,7 +3855,11 @@ Promise.any([
 
 ---
 
+<a id="question-113"></a>
+
 ### What does an async function always return?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3238,7 +3888,11 @@ noReturn().then(x => console.log(x)); // undefined
 
 ---
 
+<a id="question-114"></a>
+
 ### Does await block the entire JavaScript thread?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3263,7 +3917,11 @@ The function pauses at await, but other code can run.
 
 ---
 
+<a id="question-115"></a>
+
 ### How do you handle errors with async/await?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3292,7 +3950,11 @@ fetchData()
 
 ---
 
+<a id="question-116"></a>
+
 ### What is the difference between sequential and concurrent asynchronous operations?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3318,7 +3980,11 @@ const [data1, data2, data3] = await Promise.all([
 
 ---
 
+<a id="question-117"></a>
+
 ### Why does forEach(async () => ...) not wait for its callbacks?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3352,7 +4018,11 @@ await Promise.all([1, 2, 3].map(async (num) => {
 
 ---
 
+<a id="question-118"></a>
+
 ### How would you process asynchronous tasks sequentially?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3379,7 +4049,11 @@ async function processSequentially(items) {
 
 ---
 
+<a id="question-119"></a>
+
 ### How would you limit the number of concurrent asynchronous tasks?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3411,7 +4085,11 @@ async function limitConcurrency(tasks, limit) {
 
 ---
 
+<a id="question-120"></a>
+
 ### Can a Promise itself be cancelled, and how does AbortController help cancel an operation?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3442,7 +4120,11 @@ setTimeout(() => controller.abort(), 1000);
 
 ## API Handling & Production Scenarios
 
+<a id="question-121"></a>
+
 ### Does fetch() reject automatically for HTTP errors such as 404 or 500?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3468,7 +4150,11 @@ if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
 ---
 
+<a id="question-122"></a>
+
 ### How do you distinguish network failures, HTTP failures, and response-parsing failures?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3500,7 +4186,11 @@ async function safeFetch(url) {
 
 ---
 
+<a id="question-123"></a>
+
 ### Why should you check response.ok?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3520,7 +4210,11 @@ Without this check, you might process error responses as successful data.
 
 ---
 
+<a id="question-124"></a>
+
 ### Can you read a response body more than once?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3544,7 +4238,11 @@ const data2 = await clone.json();
 
 ---
 
+<a id="question-125"></a>
+
 ### How do you cancel an API request?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3578,7 +4276,11 @@ This prevents state updates on unmounted components.
 
 ---
 
+<a id="question-126"></a>
+
 ### How do you prevent an older API response from overwriting newer results?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3617,7 +4319,11 @@ async function fetchData() {
 
 ---
 
+<a id="question-127"></a>
+
 ### How would you implement request timeouts?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3645,7 +4351,11 @@ async function fetchWithTimeout(url, timeout = 5000) {
 
 ---
 
+<a id="question-128"></a>
+
 ### What is exponential backoff?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3673,7 +4383,11 @@ async function fetchWithBackoff(url, maxRetries = 3) {
 
 ---
 
+<a id="question-129"></a>
+
 ### Why should retry logic include jitter?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3691,7 +4405,11 @@ delay = baseDelay * Math.pow(2, attempt) * (0.5 + Math.random());
 
 ---
 
+<a id="question-130"></a>
+
 ### Which requests are safe to retry, and how does idempotency affect that decision?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3709,7 +4427,11 @@ delay = baseDelay * Math.pow(2, attempt) * (0.5 + Math.random());
 
 ---
 
+<a id="question-131"></a>
+
 ### How should a client handle 429 Too Many Requests and Retry-After?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3732,7 +4454,11 @@ async function fetchWithRateLimit(url) {
 
 ---
 
+<a id="question-132"></a>
+
 ### How would you prevent duplicate API requests?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3760,7 +4486,11 @@ async function fetchOnce(url) {
 
 ---
 
+<a id="question-133"></a>
+
 ### How would you cache API results and expire stale entries?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3784,7 +4514,11 @@ async function fetchWithCache(url, ttl = 60000) {
 
 ---
 
+<a id="question-134"></a>
+
 ### How would you implement debounced search?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3813,7 +4547,11 @@ input.addEventListener("input", (e) => {
 
 ---
 
+<a id="question-135"></a>
+
 ### How would you combine debouncing with cancellation of previous requests?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3843,7 +4581,11 @@ function debouncedFetch(query, delay = 300) {
 
 ---
 
+<a id="question-136"></a>
+
 ### How would you fetch independent resources concurrently?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3859,7 +4601,11 @@ const [users, posts, comments] = await Promise.all([
 
 ---
 
+<a id="question-137"></a>
+
 ### How would you display partial results when some requests fail?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3883,7 +4629,11 @@ results.forEach((result, index) => {
 
 ---
 
+<a id="question-138"></a>
+
 ### How would you prevent multiple simultaneous token-refresh requests?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3918,7 +4668,11 @@ async function getValidToken() {
 
 ---
 
+<a id="question-139"></a>
+
 ### How would you handle pagination and prevent duplicate records?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3952,7 +4706,11 @@ async function loadMore() {
 
 ---
 
+<a id="question-140"></a>
+
 ### How would you implement optimistic updates and rollback on failure?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -3988,7 +4746,11 @@ async function updateItem(id, updates) {
 
 ## DOM, Events & Browser APIs
 
+<a id="question-141"></a>
+
 ### What is the DOM?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4010,7 +4772,11 @@ h1.textContent = "Changed"; // Updates DOM
 
 ---
 
+<a id="question-142"></a>
+
 ### What is the difference between querySelector() and querySelectorAll()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4028,7 +4794,11 @@ const elements = document.querySelectorAll(".item"); // All .items
 
 ---
 
+<a id="question-143"></a>
+
 ### What is the difference between a live collection and a static collection?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4048,7 +4818,11 @@ const static = document.querySelectorAll(".item");
 
 ---
 
+<a id="question-144"></a>
+
 ### What is the difference between textContent, innerText, and innerHTML?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4073,7 +4847,11 @@ element.innerHTML = user input; // XSS risk!
 
 ---
 
+<a id="question-145"></a>
+
 ### What are event capturing, target, and bubbling phases?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4101,7 +4879,11 @@ Clicking inner: outer (capture) → inner (target) → outer (bubble)
 
 ---
 
+<a id="question-146"></a>
+
 ### What is event delegation, and when is it useful?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4128,7 +4910,11 @@ list.addEventListener("click", (e) => {
 
 ---
 
+<a id="question-147"></a>
+
 ### What is the difference between event.target and event.currentTarget?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4150,7 +4936,11 @@ function handle(e) {
 
 ---
 
+<a id="question-148"></a>
+
 ### What is the difference between preventDefault(), stopPropagation(), and stopImmediatePropagation()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4181,7 +4971,11 @@ element.addEventListener("click", handler2);
 
 ---
 
+<a id="question-149"></a>
+
 ### Why must you preserve the callback reference when removing an event listener?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4202,7 +4996,11 @@ element.removeEventListener("click", handler);
 
 ---
 
+<a id="question-150"></a>
+
 ### What do the once, passive, and signal listener options do?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4227,7 +5025,11 @@ controller.abort(); // Listener removed
 
 ---
 
+<a id="question-151"></a>
+
 ### How do you handle events on dynamically added elements?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4254,7 +5056,11 @@ function createItem() {
 
 ---
 
+<a id="question-152"></a>
+
 ### What is the difference between debounce and throttle?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4274,7 +5080,11 @@ window.addEventListener("scroll", throttle(handler, 100));
 
 ---
 
+<a id="question-153"></a>
+
 ### How does requestAnimationFrame() differ from setTimeout()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4297,7 +5107,11 @@ setTimeout(() => {
 
 ---
 
+<a id="question-154"></a>
+
 ### What is IntersectionObserver, and how would you use it for infinite scrolling?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4328,7 +5142,11 @@ function loadMoreItems() {
 
 ---
 
+<a id="question-155"></a>
+
 ### What is ResizeObserver, and when is it useful?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4353,7 +5171,11 @@ observer.observe(element);
 
 ---
 
+<a id="question-156"></a>
+
 ### What is the difference between localStorage, sessionStorage, and cookies?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4377,7 +5199,11 @@ document.cookie = "key=value; max-age=3600";
 
 ---
 
+<a id="question-157"></a>
+
 ### Why should browser storage not be treated as secure storage?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4397,7 +5223,11 @@ document.cookie = "key=value; max-age=3600";
 
 ---
 
+<a id="question-158"></a>
+
 ### What is the same-origin policy?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4417,7 +5247,11 @@ Same-origin policy restricts how documents/scripts from different origins intera
 
 ---
 
+<a id="question-159"></a>
+
 ### What is CORS, and why does using mode: "no-cors" not solve ordinary cross-origin API access?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4440,7 +5274,11 @@ fetch("https://api.example.com", {
 
 ---
 
+<a id="question-160"></a>
+
 ### How does postMessage() work, and why should you validate the sender's origin?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4467,7 +5305,11 @@ window.addEventListener("message", (e) => {
 
 ## Modules, Errors, Memory & Performance
 
+<a id="question-161"></a>
+
 ### What is the difference between named exports and default exports?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4494,7 +5336,11 @@ import add from "./utils";
 
 ---
 
+<a id="question-162"></a>
+
 ### What is the difference between static imports and dynamic import()?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4514,7 +5360,11 @@ const utils = await import("./utils");
 
 ---
 
+<a id="question-163"></a>
+
 ### What are live bindings in ES modules?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4538,7 +5388,11 @@ console.log(count); // 1 (live binding - sees updated value)
 
 ---
 
+<a id="question-164"></a>
+
 ### What can go wrong with circular module dependencies?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4565,7 +5419,11 @@ console.log(a); // Might be undefined if a imports b
 
 ---
 
+<a id="question-165"></a>
+
 ### What is strict mode, and how does it change JavaScript behavior?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4594,7 +5452,11 @@ NaN = 5; // Error (normally silent)
 
 ---
 
+<a id="question-166"></a>
+
 ### What is the difference between throw new Error() and throwing a string?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4614,7 +5476,11 @@ throw "Something went wrong";
 
 ---
 
+<a id="question-167"></a>
+
 ### What does finally do, and how can a return inside it change the result?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4645,7 +5511,11 @@ test(); // 2
 
 ---
 
+<a id="question-168"></a>
+
 ### When does try...catch fail to catch an asynchronous error?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4674,7 +5544,11 @@ try {
 
 ---
 
+<a id="question-169"></a>
+
 ### What are iterables and iterators?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4714,7 +5588,11 @@ for (const val of myIterable) {
 
 ---
 
+<a id="question-170"></a>
+
 ### What are generator functions, and how does yield work?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4744,7 +5622,11 @@ They're useful when you need to produce values on demand rather than all at once
 
 ---
 
+<a id="question-171"></a>
+
 ### How does garbage collection relate to object reachability?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4765,7 +5647,11 @@ obj = null; // Object is now unreachable, will be collected
 
 ---
 
+<a id="question-172"></a>
+
 ### What commonly causes memory leaks in frontend applications?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4799,7 +5685,11 @@ const removedElement = document.getElementById("old");
 
 ---
 
+<a id="question-173"></a>
+
 ### How can timers and event listeners retain memory after a component is removed?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4828,7 +5718,11 @@ useEffect(() => {
 
 ---
 
+<a id="question-174"></a>
+
 ### How would you prevent a memoization cache from growing indefinitely?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4862,7 +5756,11 @@ class LRUCache {
 
 ---
 
+<a id="question-175"></a>
+
 ### What is the difference between a Web Worker and a Service Worker?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4893,7 +5791,11 @@ navigator.serviceWorker.register("sw.js");
 
 ---
 
+<a id="question-176"></a>
+
 ### When would you move work into a Web Worker?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4918,7 +5820,11 @@ worker.onmessage = (e) => {
 
 ---
 
+<a id="question-177"></a>
+
 ### How would you split a long-running task to keep the page responsive?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4960,7 +5866,11 @@ function processDuringIdle(data) {
 
 ---
 
+<a id="question-178"></a>
+
 ### What are time complexity and space complexity?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -4979,7 +5889,11 @@ function processDuringIdle(data) {
 
 ---
 
+<a id="question-179"></a>
+
 ### How would you identify and fix an unnecessary nested loop?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
@@ -5020,7 +5934,11 @@ function findDuplicates(arr) {
 
 ---
 
+<a id="question-180"></a>
+
 ### How would you investigate a slow function or memory leak using browser developer tools?
+
+[Back to question index](#question-index)
 
 **Answer:**
 
