@@ -1,4 +1,4 @@
-# JavaScript Interview Questions & Answers - 5 Years Experience Level
+# JavaScript Interview Questions & Experience Level
 
 Comprehensive JavaScript interview questions with detailed, experience-based answers from real-world scenarios.
 
